@@ -9,7 +9,8 @@ const [isPopupVisible, setPopupVisible] = useState(false);
 
 const games = [
     { id: 1, name: 'Elden Ring', year: '2024', activePlayers: '5000', description: 'Game description here', image: '../imgs/elden-ring.webp' },
-{ id: 2, name: 'COD', year: '2024', activePlayers: '5000', description: 'Game description here', image: '../imgs/elden-ring.webp' }];
+    { id: 2, name: 'COD', year: '2024', activePlayers: '5000', description: 'Game description here', image: '../imgs/elden-ring.webp' }
+];
 
 
   const handleCardClick = (game) => {
