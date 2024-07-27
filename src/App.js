@@ -1,23 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
+import React, {useState} from 'react';
+import Popup from './components/PopUp';
+import './App.css'
 
-function App() {
+const App = ()=> {
+  const [selectedGame, setSelectedGame] = useState(null);
+  const gameExample = [{ id: 1, name: 'The Name of the Game', year: '2024', activePlayers: '5000', description: 'Game description here' },];
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <main>
+        <div className="myLib">
+          <h1>My Library</h1>
+          
+          <ul>
+            {games.map((game) => (
+              <li key={game.id} onClick={() => handleGameClick(game)}>
+                {game.name}
+              </li>
+            ))}
+        </ul>
+        </div>
+      </main>
+
+
     </div>
   );
 }
