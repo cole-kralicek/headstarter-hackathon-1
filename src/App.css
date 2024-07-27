@@ -1,0 +1,19 @@
+.gameList {
+    display: flex;
+    flex-direction: row; 
+    align-items: center; 
+    background-color: #4e5054;
+  }
+  
+  ul {
+    display: flex;
+    flex-wrap: wrap; /*probably change to scroll to the right*/
+    justify-content: center; 
+    padding: 0;
+    list-style-type: none; 
+  }
+  
+  li {
+    margin: 8px;
+  }
+  

@@ -1,30 +1,27 @@
-import React, {useState} from 'react';
-import Popup from './components/PopUp';
-import './App.css'
 
-const App = ()=> {
-  const [selectedGame, setSelectedGame] = useState(null);
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Home from './pages/Home';
+import Library from './pages/Library';
+import NoPage from './pages/NoPage';
+import './App.css';
+
+const App = () => {
   const gameExample = [{ id: 1, name: 'The Name of the Game', year: '2024', activePlayers: '5000', description: 'Game description here' },];
 
   return (
-    <div>
-      <main>
-        <div className="myLib">
-          <h1>My Library</h1>
-          
-          <ul>
-            {games.map((game) => (
-              <li key={game.id} onClick={() => handleGameClick(game)}>
-                {game.name}
-              </li>
-            ))}
-        </ul>
-        </div>
-      </main>
-
-
-    </div>
+    <Router>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/library" element={<Library />} />
+        <Route path="*" element={<NoPage />} />
+      </Routes>
+    </Router>
   );
 }
 
 export default App;
+
+
+
+
