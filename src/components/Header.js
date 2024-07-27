@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter, Route, Link } from 'react-router-dom';
 
-import './stylesheets/header';
+import './stylesheets/Header.css';
 
 
 function Header() {
@@ -11,10 +11,10 @@ function Header() {
             <nav>
                 <ul>
                     <li>
-                        <Link to="/">Home</Link>
+                        <a href='/'>Home</a>
                     </li>
                     <li>
-                        <Link to="Library">Library</Link>
+                        <a href='/library'>Library</a>
                     </li>
                 </ul>
             </nav>
