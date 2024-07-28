@@ -103,6 +103,7 @@ const Discovery = ({ games }) => {
 
 
             </section>
+            <div className={`popup-background ${isPopupVisible ? 'visible' : ''}`}></div>
         </div>
     )
 }
