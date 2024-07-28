@@ -4,22 +4,31 @@
   }
   
   .search-bar {
-    color: gray;
-    width: 100%;
+    font-family: 'Press Start 2P', system-ui;
+    width: 300px;
     padding: 0.5rem;
     border-radius: 4px;
     border: 1px solid #ddd;
-    margin-bottom: 1rem;
+    margin-top: .5rem;
+    height: 10px;
+    margin-bottom: 12px;
+    margin-left: 20px;
+    background-color: #66666600;
+    align-items: center;
+    color: white;
+    
   }
-  
+  ::placeholder {
+    color: rgb(255, 255, 255);
+  }
   .results-container {
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: column;
     /* gap: 1rem; */
     position: absolute;
-    width: 100%;
+    width: 400px;
     top: 100%;
-    background-color: #fff;
+    background-color: #ffffff00;
     border: 1px solid #ddd;
     border-radius: 4px;
     z-index: 10;
@@ -35,7 +44,6 @@
     border-radius: 4px;
     padding: 0.5rem;
     width: 100%; /* Make each card fit its container */
-    max-width: 200px; /* Adjust card width */
   }
   
   .result-image {

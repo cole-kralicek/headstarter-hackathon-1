@@ -28,8 +28,11 @@ const games = [
   return (
     <div>
         <Header/>
-      <main>
-      <h1>My Library</h1>
+      <main className="library">
+        <div className="library-title">
+          <h1>My Library</h1>
+        </div>
+      
         <h2>Owned</h2>
         <div className="gameList">
           <ul>

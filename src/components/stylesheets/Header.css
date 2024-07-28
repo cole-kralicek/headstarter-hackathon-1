@@ -14,6 +14,10 @@ header {
     z-index: 2;
 
 }
+.head{
+    background: linear-gradient(to bottom, black, rgba(0, 0, 0, 0.1));
+    padding-right: 25px;
+}
 
 header a {
     text-decoration: none;
