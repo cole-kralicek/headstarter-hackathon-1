@@ -14,7 +14,6 @@ router.get('/games', async (req, res) => {
         const pageSize = parseInt(req.query.pageSize) || 25;
         const pageIndex = parseInt(req.query.pageIndex) || 0;
 
-        console.log(`Fetching page ${pageIndex + 1}`);
         const gameDetails = await fetchGamesByPage(allGamesCache, pageIndex, pageSize);
         data = []
         gameDetails.forEach(game => {
@@ -45,7 +44,7 @@ router.get('/popular', async (req, res) => {
         if (!allGamesCache) {
             allGamesCache = await getPopularGames();
         }
-
+        
         const gameDetails = await fetchPopularGames(allGamesCache);
         data = []
         gameDetails.forEach(game => {

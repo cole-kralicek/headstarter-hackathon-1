@@ -5,7 +5,7 @@ const { default: fetch } = require('node-fetch');
 
 const key = process.env.STEAMKEY;
 
-const allGamesUrl = `https://api.steampowered.com/IStoreService/GetAppList/v1/?include_games=true&include_dlc=false&include_software=false&include_videos=false&include_hardware=false&key=3539272DDA1D07BBE9DC746EDBF78735&max_results=200`;
+const allGamesUrl = `https://api.steampowered.com/IStoreService/GetAppList/v1/?include_games=true&include_dlc=false&include_software=false&include_videos=false&include_hardware=false&key=3539272DDA1D07BBE9DC746EDBF78735&max_results=100`;
 
 async function getAllGames() {
     try {
@@ -14,7 +14,6 @@ async function getAllGames() {
             throw new Error(`HTTP request failed: ${response.status}`);
         }
         const json = await response.json();
-        console.log(json.response.apps)
         return json.response.apps;
     } catch (error) {
         throw new Error(`HTTP request failed: ${error.message}`);
@@ -32,7 +31,6 @@ async function getGameInfo(appId) {
         if (json[appId].success === true)  {
             return json[appId].data
         }
-        console.log("righthere",json[appId])
         return;
     } catch (error) {
         throw new Error(`HTTP request failed: ${error.message}`);
@@ -47,9 +45,7 @@ async function fetchGamesByPage(allGames, pageIndex, pageSize) {
 
     const gameDetailsPromises = gamesToFetch.map(async (game) => {
         const appId = game.appid;
-        console.log(`Fetching details for appId: ${appId}`);
         const gameDetails = await getGameInfo(appId);
-        console.log("try", gameDetails)
         return gameDetails;
     });
 
