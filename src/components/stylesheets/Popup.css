@@ -68,7 +68,16 @@
 .popup-description {
     margin-top: 10px;
     font-size: 17px;
+    display: -webkit-box;
+    -webkit-line-clamp: 5;
+    -webkit-box-orient: vertical;  
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: normal; /* Allows the text to wrap */
 }
+
+    
+
 
 
 .popup-details {

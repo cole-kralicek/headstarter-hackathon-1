@@ -18,11 +18,11 @@ router.get('/games', async (req, res) => {
             gameData = {
                 "id": game.steam_appid,
                 "name": game.name, 
-                "description": game.detailed_description,
+                "description": game.short_description,
                 "genre": game.genres[0].description,
                 "review": game.metacritic,
                 "release date": game.releasedate,
-                "image": game.header_image,
+                "image": game.capsule_image,
                 "requirements": {
                     "pc": game.pc_requirements,
                     "mac": game.mac_requirements,

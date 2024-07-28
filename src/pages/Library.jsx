@@ -12,15 +12,18 @@ const Library = () => {
   const [isPopupVisible, setPopupVisible] = useState(false);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const CACHE_VERSION = '1.1';
 
   const games1 = [
     { id: 1, name: 'Elden Ring', year: '2024', activePlayers: '5000', description: 'Game description here', image: '../imgs/elden-ring.webp' },
     { id: 2, name: 'COD', year: '2024', activePlayers: '5000', description: 'Game description here', image: '../imgs/elden-ring.webp' }
   ];
-
+  
   useEffect(() => {
     const cachedGames = localStorage.getItem('games');
-    if (cachedGames) {
+    const cachedVersion = localStorage.getItem('cacheVersion');
+
+    if (cachedGames && cachedVersion=== CACHE_VERSION) {
       setGames(JSON.parse(cachedGames));
       setLoading(false);
     } else {
@@ -28,6 +31,8 @@ const Library = () => {
       try {
         const gamesData = await fetchGames();
         setGames(gamesData);
+        localStorage.setItem('games', JSON.stringify(gamesData));
+        localStorage.setItem('cacheVersion', CACHE_VERSION);
       } catch (error) {
         setError(error.message);
       } finally {
@@ -38,13 +43,7 @@ const Library = () => {
     loadGames();
     }
   }, []);
-  if (loading) {
-    return <div>Loading...</div>;
-  }
-
-  if (error) {
-    return <div>Error: {error}</div>;
-  }
+ 
   const handleCardClick = (game) => {
     setPopupVisible(true);
     setSelectedGame(game);
