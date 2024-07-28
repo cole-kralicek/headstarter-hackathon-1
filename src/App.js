@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Home from './pages/Home';
 import Library from './pages/Library';
 import Game from './pages/Game';
@@ -17,7 +17,7 @@ const App = () => {
         <Routes>
           <Route path="/" element={<Home />} />
           {IDs.map(id => (
-            <Route path={`/game/:id`} element={<Game/>}>Game {id}</Route>
+            <Route path={`/game/:id`} element={<Game id={id}/>}/>
           ))}
           {/* <Route path="/game/:id" element={<Game/>} /> */}
           <Route path="/library" element={<Library />} />
