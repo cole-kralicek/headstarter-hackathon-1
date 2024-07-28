@@ -1,10 +1,50 @@
 .review-form {
-    max-width: 30%;
-    margin: 1rem auto;
-    padding: 20px 20px;
+    max-width: 600px;
+    margin-left: 75px;
+    margin-top: 50px;
+    padding: 20px;
     border-radius: 8px;
-    background: #f5f5f5;
+    background: #272727;
     align-items: left;
+}
+
+.review-form h2 {
+    color: white;
+}
+
+.review-form label {
+    color: white;
+    opacity: 80%;
+}
+
+.review-form button {
+    background-color: #424242;
+    border-radius: 5px;
+    color: #a69bc4;
+    border: none;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-family: 'Press Start 2P', system-ui;
+}
+
+.review-form .response {
+    margin-top: 10px;
+    background-color: #424242;
+    width: 95%;
+    border: none;
+    border-radius: 5px;
+    color: #a69bc4;
+    font-family: 'Press Start 2P', system-ui;
+}
+
+.review-form .response::placeholder {
+    color: #a69bc4;
+}
+
+.review-form p {
+    color: #a69bc4;
 }
 
 select,

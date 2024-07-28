@@ -17,7 +17,7 @@ const ReviewForm = () => {
   };
 
   const handleUsername = (e) => {
-    setUsername(e.target.value); 
+    setUsername(e.target.value);
   }
 
   const handleSubmit = (e) => {
@@ -34,7 +34,7 @@ const ReviewForm = () => {
       <form onSubmit={handleSubmit}>
         <div>
           <label htmlFor="rating">Rating:</label>
-          <select id="rating" value={rating} onChange={handleRatingChange}>
+          <select className='response' id="rating" value={rating} onChange={handleRatingChange}>
             {[1, 2, 3, 4, 5].map((rate) => (
               <option key={rate} value={rate}>
                 {rate}
@@ -43,12 +43,12 @@ const ReviewForm = () => {
           </select>
         </div>
         <div>
-            <label htmlFor='username'>Username:</label>
-            <textarea id="username" value={username} onChange={handleUsername} rows="1" placeholder='Username'/>
+          <label htmlFor='username'>Username:</label>
+          <textarea className='response' id="username" value={username} onChange={handleUsername} rows="1" placeholder='Username' />
         </div>
         <div>
           <label htmlFor="reviewText">Review:</label>
-          <textarea id="reviewText" value={reviewText} onChange={handleReviewChange} rows="5" placeholder="Write your review here..."
+          <textarea className='response' id="reviewText" value={reviewText} onChange={handleReviewChange} rows="5" placeholder="Write your review here..."
           />
         </div>
         <button type="submit">Submit Review</button>

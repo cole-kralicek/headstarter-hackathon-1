@@ -1,7 +1,22 @@
 .reviews-container {
-    width: 30%;
-    margin: 1rem;
-    padding: 20px;
-    background-color: #f5f5f5;
-    border-radius: 8px;
-  }
+  width: 50%;
+  margin-left: 50px;
+  margin-top: 20px;
+  padding: 20px;
+  background-color: #272727;
+  border-radius: 8px;
+}
+
+.reviews-container h2,
+h3 {
+  color: white;
+}
+
+.reviews-container h3 {
+  opacity: 80%;
+}
+
+.reviews-container p,
+.rating {
+  color: #a69bc4;
+}

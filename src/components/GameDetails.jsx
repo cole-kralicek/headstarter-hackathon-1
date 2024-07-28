@@ -36,7 +36,7 @@ const GameDetails = () => {
         setError_s(error.message)
     }
     };
-    
+
     loadGame();
   }, [id]);
 

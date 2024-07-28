@@ -1,4 +1,4 @@
-import React, { useState,useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import Card from '../components/Card.js'
 import Popup from '../components/Popup.js'
 import Header from '../components/Header.js';
@@ -19,44 +19,56 @@ const Library = () => {
     { id: 2, name: 'Call of Duty: Black Ops 2', year: '2024', activePlayers: '5000', description: "A first-person shooter video game released in 2012 by Treyarch and Activision that takes place in two different time periods: the late 1980s and 2025. The game's campaign follows the story of David Mason, the son of the main character from the previous game, Alex Mason, as he tries to stop a villain named Raul Menendez from starting a Second Cold War and destroying the world.", image: '../imgs/codbo2.png' }
   ];
   
-  // useEffect(() => {
-  //   const cachedGames = localStorage.getItem('games');
-  //   const cachedVersion = localStorage.getItem('cacheVersion');
-
-  //   if (cachedGames && cachedVersion=== CACHE_VERSION) {
-  //     setGames(JSON.parse(cachedGames));
-  //     setLoading(false);
-  //   } else {
-  //   const loadGames = async () => {
-  //     try {
-  //       const gamesData = await fetchGames();
-  //       setGames(gamesData);
-  //       localStorage.setItem('games', JSON.stringify(gamesData));
-  //       localStorage.setItem('cacheVersion', CACHE_VERSION);
-  //     } catch (error) {
-  //       setError(error.message);
-  //     } finally {
-  //       setLoading(false);
-  //     }
-  //   };
-
-  //   loadGames();
-  //   }
-  // }, []);
-
   useEffect(() => {
-    const fetchGames = async () => {
+    const cachedGames = localStorage.getItem('games');
+    const cachedVersion = localStorage.getItem('cacheVersion');
+
+    if (cachedGames && cachedVersion=== CACHE_VERSION) {
+      setGames(JSON.parse(cachedGames));
+      setLoading(false);
+    } else {
+    const loadGames = async () => {
       try {
-        const gamesData = await fetchPopularGames();
+        const gamesData = await fetchGames();
         setGames(gamesData);
+        localStorage.setItem('games', JSON.stringify(gamesData));
+        localStorage.setItem('cacheVersion', CACHE_VERSION);
       } catch (error) {
-        console.error('Failed to fetch popular games:', error);
+        setError(error.message);
+      } finally {
+        setLoading(false);
       }
     };
 
-    fetchGames();
+    loadGames();
+    }
   }, []);
- 
+
+  useEffect(() => {
+    const cachedGames = localStorage.getItem('games');
+    const cachedVersion = localStorage.getItem('cacheVersion');
+
+    if (cachedGames && cachedVersion=== CACHE_VERSION) {
+      setGames(JSON.parse(cachedGames));
+      setLoading(false);
+    } else {
+    const loadGames = async () => {
+      try {
+        const gamesData = await fetchGames();
+        setGames(gamesData);
+        localStorage.setItem('games', JSON.stringify(gamesData));
+        localStorage.setItem('cacheVersion', CACHE_VERSION);
+      } catch (error) {
+        setError(error.message);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    loadGames();
+    }
+  }, []);
+
   const handleCardClick = (game) => {
     setPopupVisible(true);
     setSelectedGame(game);
@@ -67,13 +79,12 @@ const Library = () => {
     setSelectedGame(null);
   };
 
-
   return (
     <div>
       <Header />
-      <main className='library-container'>
-        <h1 className='library-title'>My Library</h1>
-        <h2 className='game-status'>Owned</h2>
+      <main className="library-container">
+        <h1 className="library-title">My Library</h1>
+        <h2 className="game-status">Owned</h2>
         <div className="gameList">
           <ul>
             {games1.map(game => (
@@ -83,27 +94,28 @@ const Library = () => {
             ))}
           </ul>
         </div>
-        <h2 className='game-status'>Wishlist</h2>
-        <div className='gameList'>
+        <h2 className="game-status">Wishlist</h2>
+        <div className="gameList">
           <ul>
-            {games.slice(0,4).map(game => (
+            {games.map(game => (
               <li key={game.id}>
                 <Card game={game} onClick={() => handleCardClick(game)} />
               </li>
             ))}
-            {isPopupVisible && (
-              <Popup
-                game={selectedGame}
-                onClose={handleClosePopup}
-              />
-            )}
           </ul>
+          {isPopupVisible && (
+            <Popup
+              game={selectedGame}
+              onClose={handleClosePopup}
+              isVisible={isPopupVisible}
+            />
+          )}
         </div>
       </main>
       <Footer />
       <div className={`popup-background ${isPopupVisible ? 'visible' : ''}`}></div>
     </div>
   );
-}
+};
 
 export default Library;
