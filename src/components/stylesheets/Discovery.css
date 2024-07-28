@@ -19,7 +19,7 @@
     .discovery-cover-image {
         height: 60vh;
         width: 200vh;
-        background-image: url("D:\Code\Personal Projects\Headstarter\headstarter-hackathon-1\public\imgs\elden-ring-wide.jpg");
+        background-image: url("../../../public/imgs/elden-ring-wide.jpg");
         background-size: 60%;
         background-position: center;
         top: -40px;
