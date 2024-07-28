@@ -2,14 +2,14 @@ import React from "react";
 
 import Header from "../components/Header";
 import Discovery from "../components/Discovery";
+import Footer from "../components/Footer";
 
 function Home() {
     return (
         <div>
             <Header/>
-            <h1>Home</h1>
-            <h2>Discovery</h2>
-            <Discovery></Discovery>
+            <Discovery/>
+            <Footer/>
         </div>
     )
 }
