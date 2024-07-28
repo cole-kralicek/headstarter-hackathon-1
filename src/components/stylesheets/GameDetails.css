@@ -1,0 +1,20 @@
+.game-page-wrapper {
+    width: 60%;
+    margin: 1rem;
+    padding: 1rem;
+    background-color: #f5f5f5;
+    border-radius: 8px;
+  }
+
+  .game-page {
+    display: flex;
+    align-items: flex-start;
+  }
+
+  .game-page-image {
+    margin-right: 20px;
+  }
+
+  .game-text p {
+    margin: 10px 0 10px 0;
+  }

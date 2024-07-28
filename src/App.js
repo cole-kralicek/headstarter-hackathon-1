@@ -16,10 +16,6 @@ const App = () => {
       <Router>
         <Routes>
           <Route path="/" element={<Home />} />
-          {IDs.map(id => (
-            <Route path={`/game/:id`} element={<Game />}>Game {id}</Route>
-          ))}
-          {/* <Route path="/game/:id" element={<Game/>} /> */}
           <Route path="/library" element={<Library />} />
           <Route path="*" element={<NoPage />} />
         </Routes>
