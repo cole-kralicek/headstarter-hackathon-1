@@ -58,7 +58,7 @@ const Library = () => {
         </div>
       </main>
       <Footer />
-      {/* <div className={`overlay ${isPopupVisible ? 'visible' : ''}`}></div> */}
+      <div className={`popup-background ${isPopupVisible ? 'visible' : ''}`}></div>
     </div>
   );
 }

@@ -1,19 +1,38 @@
+/* .popup-background {
+    width: 100vh;
+    height: 100vh;
+    background-color: black;
+    z-index: 1;
+} */
+
 .popup-overlay {
     position: fixed;
-    top: 25%;
+    top: 22%;
     left: 22%;
-    width: 800px;
-    height: 500px;
-    background-color: rgb(164, 171, 179);
+    width: 60%;
+    background-color: #272727;
     border-radius: 5px;
+    z-index: 5;
+    opacity: 0;
+    /* Start hidden */
+    transform: translateY(-20px);
+    /* Slide up */
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    /* Transition effect */
+}
+
+.popup-overlay.visible {
+    opacity: 1;
+    /* Fade in */
+    transform: translateY(0);
+    /* Slide down */
 }
 
 .popup-top {
-    background-color: rgb(121, 127, 134);
-
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
     padding: 10px;
+    border-bottom: 2px solid #6d5e96;
 }
 
 .close-button {
@@ -22,7 +41,9 @@
     right: 10px;
     background: transparent;
     border: none;
-
+    font-family: 'Press Start 2P', system-ui;
+    color: #6d5e96;
+    font-weight: 800;
 }
 
 .popup-header {
@@ -41,14 +62,15 @@
 .popup-info {
     margin-left: 20px;
     padding-top: 10px;
-    width: 70%;
+    width: 75%;
     /* background-color: red; */
 }
 
 .popup-info h2 {
-    margin: 0;
+    margin-top: 5px;
+    margin-bottom: 20px;
     font-size: 28px;
-    /* background-color: green; */
+    color: white;
 }
 
 .popup-info .popup-meta {
@@ -63,11 +85,15 @@
 
 .popup-info .popup-meta p {
     margin: 0;
+    color: white;
+    opacity: 80%;
 }
 
 .popup-description {
     margin-top: 10px;
     font-size: 17px;
+    color: white;
+    opacity: 80%;
 }
 
 
@@ -75,10 +101,7 @@
     padding-top: 15px;
     padding-bottom: 15px;
     padding-left: 10px;
-    padding-right: 10px;
-    /* display: grid;
-    grid-template-columns: auto auto auto auto auto; */
-
+    padding-right: 20px;
 }
 
 .popup-details-1,
@@ -89,11 +112,17 @@
 }
 
 .popup-details-1 {
-    width: 60%;
+    margin-top: 10px;
+    width: 100%;
 }
 
 .popup-details-2 {
-    width: 90%;
+    width: 100%;
+}
+
+.popup-details-3 {
+    margin-top: 20px;
+    width: 100%;
 }
 
 .input-group {
@@ -104,12 +133,17 @@
 .input-group label {
     display: block;
     font-size: 17px;
+    color: white;
+    opacity: 80%;
 }
 
 .input-group .response {
+    margin-top: 5px;
     border-radius: 4px;
-}
-
-textarea {
-    width: 100%;
+    background-color: #424242;
+    border: none;
+    color: #a69bc4;
+    font-family: 'Press Start 2P', system-ui;
+    height: 35px;
+    padding-left: 10px;
 }

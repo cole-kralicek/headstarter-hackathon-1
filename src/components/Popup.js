@@ -4,7 +4,8 @@ import './stylesheets/Popup.css'
 const Popup = ({ game, onClose }) => {
   if (!game) return null;
   return (
-    <div className="popup-overlay">
+    // <div className='popup-background'>
+    <div className={`popup-overlay ${game ? 'visible' : ''}`}>
       <div className="popup-top">
         <button className="close-button" onClick={onClose}>X</button>
         <div className="popup-header">
@@ -48,7 +49,7 @@ const Popup = ({ game, onClose }) => {
             <input className='response' type="date" />
           </div>
           <div className="input-group">
-            <label>Completion Date</label>
+            <label>Finish Date</label>
             <input className='response' type="date" />
           </div>
           <div className="input-group">
@@ -56,11 +57,13 @@ const Popup = ({ game, onClose }) => {
             <input className='response' type="number" />
           </div>
         </div>
-        <div className="input-group">
-          <label>Notes</label>
-          <textarea className='response' />
+        <div className='popup-details-3'>
+          <div className="input-group">
+            <label>Notes</label>
+            <textarea className='response' />
+          </div>
         </div>
-      </div>
+      </div >
     </div >
   );
 };
