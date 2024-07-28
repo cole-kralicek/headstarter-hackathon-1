@@ -19,7 +19,7 @@ const GameDetails = () => {
         setError_s(error.message);
       }
     };
-    
+
     loadGame();
   }, [id]);
 
@@ -36,8 +36,6 @@ const GameDetails = () => {
       <div className="game-page">
         <img src={game.image} alt={game.name} className='game-page-image' />
         <div className="game-text">
-          <p><strong>Year:</strong> {game.year}</p>
-          <p><strong>Active Players:</strong> {game.activePlayers}</p>
           <p><strong>Description:</strong> {game.description}</p>
         </div>
       </div>
