@@ -3,23 +3,6 @@ import './stylesheets/Popup.css'
 
 const Popup = ({ game, onClose }) => {
 
-  const game2 = [
-    {
-      type: 'game',
-      name: 'Portal',
-      detailed_description: '<p>Portal&trade; is a new single player game from Valve. Set in the mysterious Aperture Science Laboratories, Portal has been called one of the most innovative new games on the horizon and will offer gamers hours of unique gameplay.</p>\r\n' +
-        "\t\t\t\t\t<p>The game is designed to change the way players approach, manipulate, and surmise the possibilities in a given environment; similar to how Half-Life&reg; 2's Gravity Gun innovated new ways to leverage an object in any given situation.</p>\r\n" +
-        '\t\t\t\t\t<p>Players must solve physical puzzles and challenges by opening portals to maneuvering objects, and themselves, through space.</p>\r\n' +
-        '\t\t\t\t\t',
-      about_the_game: '<p>Portal&trade; is a new single player game from Valve. Set in the mysterious Aperture Science Laboratories, Portal has been called one of the most innovative new games on the horizon and will offer gamers hours of unique gameplay.</p>\r\n' +
-        "\t\t\t\t\t<p>The game is designed to change the way players approach, manipulate, and surmise the possibilities in a given environment; similar to how Half-Life&reg; 2's Gravity Gun innovated new ways to leverage an object in any given situation.</p>\r\n" +
-        '\t\t\t\t\t<p>Players must solve physical puzzles and challenges by opening portals to maneuvering objects, and themselves, through space.</p>\r\n' +
-        '\t\t\t\t\t',
-      short_description: 'Portal&trade; is a new single player game from Valve. Set in the mysterious Aperture Science Laboratories, Portal has been called one of the most innovative new games on the horizon and will offer gamers hours of unique gameplay.',
-      image: 'https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/400/header.jpg?t=1721932680',
-    }
-  ]
-
   if (!game) return null;
   return (
     // <div className='popup-background'>

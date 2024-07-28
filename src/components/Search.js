@@ -64,7 +64,7 @@ const Search = () => {
               <img src={result.image} alt={result.title} className="result-image" />
               <div className="result-details">
                 
-                <h3 className="result-title">{result.name}{result.id}</h3>
+                <h3 className="result-title">{result.name}</h3>
                 
                 <p className="result-description">{result.description}</p>;
                 
