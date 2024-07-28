@@ -16,7 +16,7 @@ const Library = () => {
 
   const games1 = [
     { id: 1, name: 'Elden Ring', year: '2024', activePlayers: '5000', description: 'Game description here', image: '../imgs/elden-ring.webp' },
-    { id: 2, name: 'COD', year: '2024', activePlayers: '5000', description: 'Game description here', image: '../imgs/elden-ring.webp' }
+    { id: 2, name: 'Call of Duty: Black Ops 2', year: '2024', activePlayers: '5000', description: 'Game description here', image: '../imgs/codbo2.png' }
   ];
   
   useEffect(() => {

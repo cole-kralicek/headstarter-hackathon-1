@@ -49,6 +49,11 @@ const Discovery = ({ games }) => {
                     </div>
                 </div>
             </section>
+
+            <div className="parent-container">
+            <div className="wip">
+                <h2>Work in Progress</h2>
+            </div>
             <section className="categories">
                 <h2>Browse by Category</h2>
                 <div className="game-list">
@@ -61,6 +66,8 @@ const Discovery = ({ games }) => {
                     ))}
                 </div>
                 </section>
+                </div>
+
             <section className="why-us">
                 <div>
                     <h2>Why Use Backseat?</h2>

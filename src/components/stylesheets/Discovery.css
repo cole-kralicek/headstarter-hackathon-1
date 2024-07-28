@@ -154,7 +154,9 @@
 }
 
 .categories {
-  margin: 50px auto
+  margin: 50px auto;
+  position: relative;
+  z-index: 1;
 }
 
 .categories h2 {
@@ -227,4 +229,27 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+.wip {
+  position: absolute; /* Position relative to the parent container */
+  top: 0; /* Align to the top of the parent container */
+  left: 0; /* Align to the left of the parent container */
+  width: 100%; /* Full width of the parent container */
+  height: 100%; /* Full height of the parent container */
+  background: rgba(0, 0, 0, 0.7); /* Semi-transparent black background */
+  color: white; /* White text color */
+  z-index: 1000; /* High z-index to appear above other elements */
+  display: flex; /* Use flexbox for centering content */
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+  text-align: center; /* Center text alignment */
+  font-size: 2em; /* Larger font size */
+  opacity: 0.9; /* Slightly transparent */
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+.parent-container {
+  position: relative; /* Ensure the container is positioned */
+  padding: 0px
 }

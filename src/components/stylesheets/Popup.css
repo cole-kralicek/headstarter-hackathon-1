@@ -94,6 +94,12 @@
     font-size: 17px;
     color: white;
     opacity: 80%;
+    display: -webkit-box;
+    -webkit-line-clamp: 6;
+    -webkit-box-orient: vertical;  
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: normal; /* Allows the text to wrap */
 }
 
     
