@@ -7,13 +7,11 @@ import './stylesheets/Header.css';
 function Header() {
     return (
         <header className="head">
-            {/* <link rel="preconnect" href="https://fonts.googleapis.com" />
-            <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-            <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet" /> */}
             <div className="logo">
+                <img src='/imgs/BackseatLogo.png' alt='BackseatLogo'></img>
                 <a href='/'>Backseat</a>
             </div>
-            <Search />
+            {/* <Search /> */}
             <nav className='navbar'>
                 <ul className='navbar-items'>
                     <li>

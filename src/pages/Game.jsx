@@ -4,7 +4,6 @@ import GameDetails from "../components/GameDetails";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import UserContent from "../components/UserContent";
-import ReviewForm from "../components/ReviewForm";
 
 
 const Game = ( {id} ) => {
@@ -25,7 +24,6 @@ const Game = ( {id} ) => {
         <div>
             <Header/>
             <GameDetails gameId={id}/>
-            <ReviewForm/>
             <UserContent reviews={reviews} ratings={ratings}/>
             <Footer/>
         </div>

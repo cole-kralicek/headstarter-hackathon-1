@@ -74,6 +74,16 @@
     /* background-color: red; */
 }
 
+.popup-info a {
+    margin: 5px;
+    background: none;
+    border: none;
+    color: white;
+    opacity: 0.8;
+    font-family: 'Press Start 2P', system-ui;
+    text-decoration: underline;
+}
+
 .popup-info h2 {
     margin-top: 5px;
     margin-bottom: 20px;

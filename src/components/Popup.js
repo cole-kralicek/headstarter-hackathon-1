@@ -15,6 +15,7 @@ const Popup = ({ game, onClose }) => {
           {/* </div> */}
           <div className="popup-info">
             <h2>{game.name}</h2>
+            <a href={`/game/${game.id}`}>View full page</a>
             <div className="popup-meta">
               {/* <p>{game.year}</p>
               <p>Active Players: {game.activePlayers}</p> */}

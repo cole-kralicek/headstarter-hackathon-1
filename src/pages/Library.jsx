@@ -3,7 +3,7 @@ import Card from '../components/Card.js'
 import Popup from '../components/Popup.js'
 import Header from '../components/Header.js';
 import Footer from '../components/Footer.jsx';
-import { fetchGames } from '../apiService';
+import { fetchPopularGames } from '../apiService';
 
 
 const Library = () => {
@@ -19,29 +19,42 @@ const Library = () => {
     { id: 2, name: 'Call of Duty: Black Ops 2', year: '2024', activePlayers: '5000', description: "A first-person shooter video game released in 2012 by Treyarch and Activision that takes place in two different time periods: the late 1980s and 2025. The game's campaign follows the story of David Mason, the son of the main character from the previous game, Alex Mason, as he tries to stop a villain named Raul Menendez from starting a Second Cold War and destroying the world.", image: '../imgs/codbo2.png' }
   ];
   
-  useEffect(() => {
-    const cachedGames = localStorage.getItem('games');
-    const cachedVersion = localStorage.getItem('cacheVersion');
+  // useEffect(() => {
+  //   const cachedGames = localStorage.getItem('games');
+  //   const cachedVersion = localStorage.getItem('cacheVersion');
 
-    if (cachedGames && cachedVersion=== CACHE_VERSION) {
-      setGames(JSON.parse(cachedGames));
-      setLoading(false);
-    } else {
-    const loadGames = async () => {
+  //   if (cachedGames && cachedVersion=== CACHE_VERSION) {
+  //     setGames(JSON.parse(cachedGames));
+  //     setLoading(false);
+  //   } else {
+  //   const loadGames = async () => {
+  //     try {
+  //       const gamesData = await fetchGames();
+  //       setGames(gamesData);
+  //       localStorage.setItem('games', JSON.stringify(gamesData));
+  //       localStorage.setItem('cacheVersion', CACHE_VERSION);
+  //     } catch (error) {
+  //       setError(error.message);
+  //     } finally {
+  //       setLoading(false);
+  //     }
+  //   };
+
+  //   loadGames();
+  //   }
+  // }, []);
+
+  useEffect(() => {
+    const fetchGames = async () => {
       try {
-        const gamesData = await fetchGames();
+        const gamesData = await fetchPopularGames();
         setGames(gamesData);
-        localStorage.setItem('games', JSON.stringify(gamesData));
-        localStorage.setItem('cacheVersion', CACHE_VERSION);
       } catch (error) {
-        setError(error.message);
-      } finally {
-        setLoading(false);
+        console.error('Failed to fetch popular games:', error);
       }
     };
 
-    loadGames();
-    }
+    fetchGames();
   }, []);
  
   const handleCardClick = (game) => {
@@ -73,7 +86,7 @@ const Library = () => {
         <h2 className='game-status'>Wishlist</h2>
         <div className='gameList'>
           <ul>
-            {games.map(game => (
+            {games.slice(0,4).map(game => (
               <li key={game.id}>
                 <Card game={game} onClick={() => handleCardClick(game)} />
               </li>

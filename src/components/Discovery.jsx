@@ -37,7 +37,7 @@ const Discovery = ({ games }) => {
                 <div className="discovery-cover">
                     <div className="discovery-cover-image"></div>
                     <a href="/library">
-                        <button className="discovery-cover-button">Start!</button>
+                        <button>Start!</button>
                     </a>
                 </div>
                 <p className="slogan">Backseat takes the effort out of organizing your library.</p>
