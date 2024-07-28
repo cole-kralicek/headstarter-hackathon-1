@@ -1,9 +1,35 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './stylesheets/Search.css';
+import { fetchGames } from '../apiService';
 
 const Search = () => {
+  const [games, setGames] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
+  const [loading, setLoading] = useState(true);
   const [results, setResults] = useState([]);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    const loadGames = async () => {
+      try {
+        const gamesData = await fetchGames();
+        setGames(gamesData);
+      } catch (error) {
+        setError(error.message);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    loadGames();
+  }, []);
+  if (loading) {
+    return <div>Loading...</div>;
+  }
+
+  if (error) {
+    return <div>Error: {error}</div>;
+  }
 
   const mockData = [
     { id: 1, title: 'Game 1', description: 'Description of Game 1', imageUrl: 'https://via.placeholder.com/150' },
@@ -11,9 +37,9 @@ const Search = () => {
     { id: 3, title: 'Game 3', description: 'Description of Game 3', imageUrl: 'https://via.placeholder.com/150' },
     { id: 4, title: 'Game 4', description: 'Description of Game 4', imageUrl: 'https://via.placeholder.com/150' },
   ];
-
-  const filteredResults = mockData.filter(item =>
-    item.title.toLowerCase().includes(searchTerm.toLowerCase())
+  console.log("hi")
+  const filteredResults = games.filter(item =>
+    item.name.toLowerCase().includes(searchTerm.toLowerCase())
   ).slice(0, 4);
 
   return (
