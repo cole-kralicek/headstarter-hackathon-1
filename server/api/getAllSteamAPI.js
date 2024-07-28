@@ -5,80 +5,78 @@ const { default: fetch } = require('node-fetch');
 
 const key = process.env.STEAMKEY;
 
-const allGames = `https://api.steampowered.com/ISteamApps/GetAppList/v2/`;
-const gameInfo = (appid) => `https://store.steampowered.com/api/appdetails?appids=${appid}`
-const topGames = `https://steamspy.com/api.php?request=top100forever`
+const allGamesUrl = `https://api.steampowered.com/ISteamApps/GetAppList/v2/`;
 
-async function getAllGames(url) {
+async function getAllGames() {
     try {
-        // const fetch = await getFetch();
-        const gameData = []
-        const response = await fetch(url);
+        const response = await fetch(allGamesUrl);
         if (!response.ok) {
-            throw new Error(`HTTP request failed: ${response.status}`);     
+            throw new Error(`HTTP request failed: ${response.status}`);
         }
         const json = await response.json();
-        return json;
+        console.log(json.applist.apps)
+        return json.applist.apps;
     } catch (error) {
         throw new Error(`HTTP request failed: ${error.message}`);
     }
 }
 
-async function useAllGamesData() {
+async function getGameInfo(appId) {
+    const url = `https://store.steampowered.com/api/appdetails?appids=${appId}`;
     try {
-        const gameData = []
-        const allGamesData = await getAllGames(allGames);
-        console.log(allGamesData);
-        for (const game of allGamesData.applist.apps) {
-            const appId = game.appid;
-            try {
-                const gameDetails = await getGameInfo(appId);
-                gameData.push(gameDetails);
-            } catch (error) {
-                console.error(`Failed to get details for appId ${appId}: ${error.message}`);
-            }
+        const response = await fetch(url);
+        if (!response.ok) {
+            throw new Error(`HTTP request failed: ${response.status}`);
         }
+        const json = await response.json();
+        if (json[appId].success === true)  {
+            return json[appId].data
+        }
+        console.log("here",json[appId])
+        return;
+    } catch (error) {
+        throw new Error(`HTTP request failed: ${error.message}`);
+    }
+}
 
-        console.log("here");
-        console.log(gameData);
+async function fetchGamesByPage(allGames, pageIndex, pageSize) {
+    const games = []
+    const start = pageIndex * pageSize;
+    const end = start + pageSize;
+    const gamesToFetch = allGames.slice(start, end);
+
+    const gameDetailsPromises = gamesToFetch.map(async (game) => {
+        const appId = game.appid;
+        console.log(`Fetching details for appId: ${appId}`);
+        const gameDetails = await getGameInfo(appId);
+        console.log("try", gameDetails)
+        return gameDetails;
+    });
+
+    const gameDetails = await Promise.all(gameDetailsPromises);
+    return gameDetails;
+}
+
+async function main() {
+    try {
+        const allGames = await getAllGames();
+        const pageSize = 25; 
+        let pageIndex = 0;
+
+        console.log(`Fetching page ${pageIndex + 1}`);
+        let gameDetails = await fetchGamesByPage(allGames, pageIndex, pageSize);
+       
+
+        pageIndex++;
+        console.log(`Fetching page ${pageIndex + 1}`);
+        gameDetails = await fetchGamesByPage(allGames, pageIndex, pageSize);
+        console.log(gameDetails);
+        return gameDetails;
     } catch (error) {
         console.error(error);
     }
 }
 
-async function getGameInfo(appid) {
-    const maxRetries = 5;
-    let attempts = 0;
+main();
 
-    while (attempts < maxRetries) {
-        try {
-            const response = await fetch(gameInfo(appid));
-            if (response.status === 429) {
-                const retryAfter = response.headers.get('Retry-After');
-                const waitTime = retryAfter ? parseInt(retryAfter, 10) * 1000 : (attempts + 1) * 1000;
-                console.warn(`Rate limited. Waiting ${waitTime / 1000} seconds before retrying...`);
-                await new Promise(resolve => setTimeout(resolve, waitTime));
-                attempts++;
-                continue;
-            }
-            if (!response.ok) {
-                throw new Error(`HTTP request failed: ${response.status}`);
-            }
-            const json = await response.json();
-            return json;
-        } catch (error) {
-            if (error.message.includes('HTTP request failed: 429')) {
-                const waitTime = (attempts + 1) * 1000;
-                console.warn(`Rate limited. Waiting ${waitTime / 1000} seconds before retrying...`);
-                await new Promise(resolve => setTimeout(resolve, waitTime));
-                attempts++;
-            } else {
-                throw new Error(`HTTP request failed: ${error.message}`);
-            }
-        }
-    }
-    throw new Error('Exceeded maximum retry attempts');
-}
-
-// Call the function that uses the data
-useAllGamesData();
+module.exports = { getAllGames, getGameInfo, fetchGamesByPage };
