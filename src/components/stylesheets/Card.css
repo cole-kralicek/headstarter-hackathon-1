@@ -21,10 +21,13 @@
   opacity: 80%;
   line-height:23px;
 }
-
+.card:hover{
+  cursor: pointer;
+}
 .card:hover .card-title {
   color: rgb(255, 238, 0);
   opacity: 100%;
+
 }
 
 .image {

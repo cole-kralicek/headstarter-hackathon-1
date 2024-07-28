@@ -15,8 +15,8 @@ const Library = () => {
   const CACHE_VERSION = '1.1';
 
   const games1 = [
-    { id: 1, name: 'Elden Ring', year: '2024', activePlayers: '5000', description: 'Game description here', image: '../imgs/elden-ring.webp' },
-    { id: 2, name: 'Call of Duty: Black Ops 2', year: '2024', activePlayers: '5000', description: 'Game description here', image: '../imgs/codbo2.png' }
+    { id: 1, name: 'Elden Ring', year: '2024', activePlayers: '5000', description: "A fantasy action role-playing game (RPG) developed by FromSoftware and released in February 2022. The game is set in the Lands Between, a world created by Hidetaka Miyazaki and George R.R. Martin, where players control a customizable character on a quest to become the Elden Lord and repair the Elden Ring", image: '../imgs/elden-ring.webp' },
+    { id: 2, name: 'Call of Duty: Black Ops 2', year: '2024', activePlayers: '5000', description: "A first-person shooter video game released in 2012 by Treyarch and Activision that takes place in two different time periods: the late 1980s and 2025. The game's campaign follows the story of David Mason, the son of the main character from the previous game, Alex Mason, as he tries to stop a villain named Raul Menendez from starting a Second Cold War and destroying the world.", image: '../imgs/codbo2.png' }
   ];
   
   useEffect(() => {
