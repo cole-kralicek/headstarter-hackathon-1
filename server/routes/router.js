@@ -10,11 +10,9 @@ router.get('/games', async (req, res) => {
         if (!allGamesCache) {
             allGamesCache = await getAllGames();
         }
-
-        const pageSize = parseInt(req.query.pageSize) || 25;
-        const pageIndex = parseInt(req.query.pageIndex) || 0;
-
-        const gameDetails = await fetchGamesByPage(allGamesCache, pageIndex, pageSize);
+        console.log("idie", allGamesCache)
+        const gameDetails = await fetchGamesByPage(allGamesCache);
+        console.log("idie1", gameDetails)
         data = []
         gameDetails.forEach(game => {
             gameData = {
@@ -44,26 +42,31 @@ router.get('/popular', async (req, res) => {
         if (!allGamesCache) {
             allGamesCache = await getPopularGames();
         }
+        console.log("wtf1", allGamesCache)
         
         const gameDetails = await fetchPopularGames(allGamesCache);
+        console.log("wtf", gameDetails)
         data = []
-        gameDetails.forEach(game => {
-            gameData = {
-                "id": game.steam_appid,
-                "name": game.name, 
-                "description": game.detailed_description,
-                "genre": game.genres[0].description,
-                "review": game.metacritic,
-                "release date": game.releasedate,
-                "image": game.header_image,
-                "requirements": {
-                    "pc": game.pc_requirements,
-                    "mac": game.mac_requirements,
-                    "linux": game.linux_requirements
+        if (gameDetails){
+            gameDetails.forEach(game => {
+                gameData = {
+                    "id": game.steam_appid,
+                    "name": game.name, 
+                    "description": game.detailed_description,
+                    "genre": game.genres[0].description,
+                    "review": game.metacritic,
+                    "release date": game.releasedate,
+                    "image": game.header_image,
+                    "requirements": {
+                        "pc": game.pc_requirements,
+                        "mac": game.mac_requirements,
+                        "linux": game.linux_requirements
+                    }
                 }
-            }
-            data.push(gameData)
-        })
+                data.push(gameData)
+            })
+        }
+        
         res.json({"data": data});
     } catch (error) {
         res.status(500).json({ error: error.message });

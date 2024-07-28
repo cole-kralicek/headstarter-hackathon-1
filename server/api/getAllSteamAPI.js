@@ -5,7 +5,7 @@ const { default: fetch } = require('node-fetch');
 
 const key = process.env.STEAMKEY;
 
-const allGamesUrl = `https://api.steampowered.com/IStoreService/GetAppList/v1/?include_games=true&include_dlc=false&include_software=false&include_videos=false&include_hardware=false&key=3539272DDA1D07BBE9DC746EDBF78735&max_results=100`;
+const allGamesUrl = `https://api.steampowered.com/IStoreService/GetAppList/v1/?include_games=true&include_dlc=false&include_software=false&include_videos=false&include_hardware=false&key=3539272DDA1D07BBE9DC746EDBF78735&max_results=20`;
 
 async function getAllGames() {
     try {
@@ -37,13 +37,12 @@ async function getGameInfo(appId) {
     }
 }
 
-async function fetchGamesByPage(allGames, pageIndex, pageSize) {
+async function fetchGamesByPage(allGames) {
     const games = []
-    const start = pageIndex * pageSize;
-    const end = start + pageSize;
-    const gamesToFetch = allGames.slice(start, end);
+    console.log("allgames", allGames)
+    const gamesArray = Object.values(allGames);
 
-    const gameDetailsPromises = gamesToFetch.map(async (game) => {
+    const gameDetailsPromises = gamesArray.map(async (game) => {
         const appId = game.appid;
         const gameDetails = await getGameInfo(appId);
         return gameDetails;
