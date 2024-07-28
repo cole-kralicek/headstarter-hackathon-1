@@ -1,7 +1,22 @@
 .ratings-container {
-    width: 30%;
-    margin: 1rem;
-    padding: 20px;
-    background-color: #f5f5f5;
-    border-radius: 8px;
-  }
+  width: 30%;
+  margin-left: 20px;
+  margin-top: 20px;
+  padding: 20px;
+  background-color: #272727;
+  border-radius: 8px;
+}
+
+
+.ratings-container h2,
+h3 {
+  color: white;
+}
+
+.ratings-container h3 {
+  opacity: 80%;
+}
+
+.ratings-container p {
+  color: #a69bc4;
+}

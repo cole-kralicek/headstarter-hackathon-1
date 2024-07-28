@@ -1,10 +1,3 @@
-/* .popup-background {
-    width: 100vh;
-    height: 100vh;
-    background-color: black;
-    z-index: 1;
-} */
-
 .popup-overlay {
     position: fixed;
     top: 22%;
@@ -14,11 +7,9 @@
     border-radius: 5px;
     z-index: 5;
     opacity: 0;
-    /* Start hidden */
+    /*animation*/
     transform: translateY(-20px);
-    /* Slide up */
     transition: opacity 0.3s ease, transform 0.3s ease;
-    /* Transition effect */
 }
 
 .popup-overlay.visible {
