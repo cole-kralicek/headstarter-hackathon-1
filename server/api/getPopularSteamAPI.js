@@ -44,16 +44,20 @@ async function getPopularGameInfo(appId) {
 }
 
 async function fetchPopularGames(popularGames) {
+    let counter = 0;
+    const gameDetails = [];
 
-    const gameDetailsPromises = Object.keys(popularGames).map(async (appId) => {
-        console.log(appId)
-        const gameDetails = await getPopularGameInfo(appId);
-        console.log("yo1", gameDetails)
-        return gameDetails;
-    });
+    for (const appId of Object.keys(popularGames)) {
+        if (counter >= 21) {
+            break;
+        }
+        const gameDetail = await getPopularGameInfo(appId);
+        gameDetails.push(gameDetail);
+        counter++;
+    }
 
-    const gameDetails = await Promise.all(gameDetailsPromises);
     return gameDetails;
 }
+
 
 module.exports = { getPopularGames, getPopularGameInfo, fetchPopularGames};
