@@ -6,27 +6,19 @@ import { fetchGameById } from '../apiService';
 
 const GameDetails = () => {
   const [game, setGame] = useState(null);
-  const [error_s, setError_s] = useState('');
   const { id } = useParams();
 
   useEffect(() => {
     // Simulate an API call
     const loadGame = async () => {
-      try {
-        const gameData = await fetchGameById(id);
-        setGame(gameData);
-      } catch (error) {
-        setError_s(error.message);
-      }
+      const gameData = await fetchGameById();
+      setGame(gameData);
     };
     
     loadGame();
   }, [id]);
 
-
-  if (error_s) {
-    return <div>{error_s}</div>
-  } else if (!game) {
+  if (!game) {
     return <div>Loading...</div>;
   }
 
@@ -34,7 +26,7 @@ const GameDetails = () => {
     <div className="game-page-wrapper">
       <h1>{game.name}</h1>
       <div className="game-page">
-        <img src={game.image} alt={game.name} className='game-page-image' />
+        <img src='https://placehold.co/120x180' alt={game.name} className='game-page-image' />
         <div className="game-text">
           <p><strong>Year:</strong> {game.year}</p>
           <p><strong>Active Players:</strong> {game.activePlayers}</p>
