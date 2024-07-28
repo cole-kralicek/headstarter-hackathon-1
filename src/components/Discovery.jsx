@@ -7,7 +7,7 @@ const Discovery = ({ games }) => {
     // Games being an array of games objects of the most popular games
     games = [
         { id: 1, name: 'Elden Ring', year: '2024', activePlayers: '5000', description: 'Game description here', image: '../imgs/elden-ring.webp' },
-        { id: 2, name: 'Call of Duty', year: '2024', activePlayers: '4000', description: 'Game description here', image: '../imgs/elden-ring.webp' },
+        { id: 2, name: 'Call of Duty', year: '2024', activePlayers: '4000', description: 'Game description here', image: '../imgs/codbo21.png' },
         { id: 3, name: 'Elden Ring', year: '2024', activePlayers: '5000', description: 'Game description here', image: '../imgs/elden-ring.webp' },
         { id: 4, name: 'Call of Duty', year: '2024', activePlayers: '4000', description: 'Game description here', image: '../imgs/elden-ring.webp' }
     ];
