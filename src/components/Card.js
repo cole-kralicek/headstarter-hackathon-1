@@ -4,8 +4,8 @@ import './stylesheets/Card.css'
 const Card = ({ game, onClick }) => {
   return (
     <div className="card" onClick={onClick}>
-      <h2>{game.name}</h2>
-      
+      <h2 className="card-title">{game.name}</h2>
+
       <img className="image" src={game.image} alt={game.name} />
     </div>
   );

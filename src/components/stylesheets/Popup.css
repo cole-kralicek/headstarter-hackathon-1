@@ -1,8 +1,166 @@
-.popup-overlay{
+/* .popup-background {
+    width: 100vh;
+    height: 100vh;
+    background-color: black;
+    z-index: 1;
+} */
+
+.popup-overlay {
     position: fixed;
-    top:100px;
-    left:200px;
+    top: 22%;
+    left: 22%;
+    width: 60%;
+    background-color: #272727;
+    border-radius: 5px;
+    z-index: 5;
+    opacity: 0;
+    /* Start hidden */
+    transform: translateY(-20px);
+    /* Slide up */
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    /* Transition effect */
+}
+
+.popup-overlay.visible {
+    opacity: 1;
+    /* Fade in */
+    transform: translateY(0);
+    /* Slide down */
+}
+
+.popup-top {
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    padding: 10px;
+    border-bottom: 2px solid #6d5e96;
+}
+
+.close-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: #414141;
+    border: none;
+    font-family: 'Press Start 2P', system-ui;
+    color: #6d5e96;
+    font-weight: 800;
+    padding-top: 5px;
+    padding-bottom: 3px;
+    padding-left: 7px;
+    cursor: pointer;
+    
+    
+
+}
+
+.popup-header {
+    display: flex;
+    align-items: center;
+
+}
+
+.popup-header img {
+    border-radius: 6px;
+    width: 15%;
+    /* background-color: aqua; */
+}
+
+
+.popup-info {
+    margin-left: 20px;
+    padding-top: 10px;
     width: 75%;
-    height: 50%;
-    background-color: rgb(49, 57, 66);
+    color: white;
+    /* background-color: red; */
+}
+
+.popup-info h2 {
+    margin-top: 5px;
+    margin-bottom: 20px;
+    font-size: 28px;
+    color: white;
+}
+
+.popup-info .popup-meta {
+    margin-top: 4px;
+    width: 80%;
+    display: flex;
+    justify-content: space-between;
+    font-size: 17px;
+    /* background-color: blue; */
+
+}
+
+.popup-info .popup-meta p {
+    margin: 0;
+    color: white;
+    opacity: 80%;
+}
+
+.popup-description {
+    margin-top: 10px;
+    font-size: 17px;
+    color: white;
+    opacity: 80%;
+    display: -webkit-box;
+    -webkit-line-clamp: 6;
+    -webkit-box-orient: vertical;  
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: normal; /* Allows the text to wrap */
+}
+
+    
+
+
+
+.popup-details {
+    padding-top: 15px;
+    padding-bottom: 15px;
+    padding-left: 10px;
+    padding-right: 20px;
+}
+
+.popup-details-1,
+.popup-details-2 {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.popup-details-1 {
+    margin-top: 10px;
+    width: 100%;
+}
+
+.popup-details-2 {
+    width: 100%;
+}
+
+.popup-details-3 {
+    margin-top: 20px;
+    width: 100%;
+}
+
+.input-group {
+    flex: 1;
+    margin-right: 10px;
+}
+
+.input-group label {
+    display: block;
+    font-size: 17px;
+    color: white;
+    opacity: 80%;
+}
+
+.input-group .response {
+    margin-top: 5px;
+    border-radius: 4px;
+    background-color: #424242;
+    border: none;
+    color: #a69bc4;
+    font-family: 'Press Start 2P', system-ui;
+    height: 35px;
+    padding-left: 10px;
 }

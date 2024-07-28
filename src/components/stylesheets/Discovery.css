@@ -1,153 +1,255 @@
 .discovery {
-    max-width: 2000px;
-    margin: 0 auto;
-    padding: 20px;
+  width: 100%;
+  margin: 0;
+  /* padding: 20px; */
+  /* background-color: aqua; */
+}
+
+.discovery-cover {
+  max-width: 100%;
+  height: 60vh;
+  justify-content: center;
+  text-align: center;
+  color: rgb(255, 255, 255);
+  z-index: 1;
+
+  position: relative;
+  display: flex;
+}
+
+.discovery-cover-image {
+  height: 100%;
+  width: 100%;
+  background-image: url("../../../public/imgs/elden-ring-wide.jpg");
+  background-size: 60%;
+  background-position: center;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  z-index: 1;
+  /* Scrolls entire element. Should scroll image only */
+  /* animation: scroll 15s linear infinite; */
+}
+
+.discovery .slogan {
+  margin-top: 25px;
+  color: #6d5e96;
+}
+
+.discovery-cover-image::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  /* Fade effect */
+  background:
+    linear-gradient(to right, rgb(0, 0, 0), rgba(255, 255, 255, 0) 20%, rgba(255, 255, 255, 0) 80%, rgb(0, 0, 0)),
+    linear-gradient(to top, rgb(0, 0, 0), rgba(255, 255, 255, 0) 20%);
+  pointer-events: none;
+}
+
+
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
   }
 
-  .discovery-cover {
-    max-width: 200vh;
-    height: 60vh;
-    justify-content: center;
-    text-align: center;
-    color: white;
-    z-index: 1;
-    padding: 20px;
-    position: relative;
-    display: flex;
+  100% {
+    transform: translateX(-50%);
   }
+}
 
-    .discovery-cover-image {
-        height: 60vh;
-        width: 200vh;
-        background-image: url("../../../public/imgs/elden-ring-wide.jpg");
-        background-size: 60%;
-        background-position: center;
-        top: -40px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        position: relative;
-        /* Scrolls entire element. Should scroll image only */
-        /* animation: scroll 15s linear infinite; */
-    }
+.discovery-cover-button {
+  width: 100px;
+  font-family: 'Press Start 2P', system-ui;
+  padding: 10px 20px;
+  font-size: 1.2rem;
+  background: none;
+  color: rgb(255, 255, 255);
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  position: absolute;
+  top: 85%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+}
 
-    .discovery-cover-image::after {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        /* Fade effect */
-        background: 
-          linear-gradient(to right, rgba(255,255,255,1), rgba(255,255,255,0) 20%, rgba(255,255,255,0) 80%, rgba(255,255,255,1)),
-          linear-gradient(to top, rgba(255,255,255,1), rgba(255,255,255,0) 20%); 
-        pointer-events: none;
-      }
+.discovery-cover-button:hover {
+  color: rgb(255, 238, 0);
+}
+
+.discovery {
+  text-align: left;
+  margin-bottom: 30px;
+  color: #333;
+}
+
+.discovery p {
+  text-align: center;
+}
+
+.games h2 {
+  text-align: center;
+  color: white;
+  font-weight: 600;
+}
+
+.game-list {
+  width: 90%;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+  justify-content: center;
+}
+
+.game-card {
+  text-align: center;
+  background-color: #272727;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: transform 0.3s ease;
+}
+
+.game-card:hover {
+  transform: translateY(-5px);
+}
+
+.game-card:hover h3 {
+  color: rgb(255, 238, 0);
+  opacity: 100%;
+}
+
+.game-image {
+  width: 100%;
+  height: 75%;
+  object-fit: cover;
+  box-shadow: 0px 4px 7px -2px rgb(0, 0, 0, 0.7);
+}
+
+.game-info {
+  padding: 15px;
+}
+
+.game-info h3 {
+  margin: 8px 0 15px 0;
+  font-size: 1.2em;
+  color: white;
+  opacity: 80%;
+  font-weight: 600;
+}
+
+.game-info p {
+  margin: 0;
+  color: #8577ac;
+  font-weight: 500;
+}
+
+.categories {
+  margin: 50px auto;
+  position: relative;
+  z-index: 1;
+}
+
+.categories h2 {
+  text-align: center;
+  color: white;
+  font-weight: 600;
+}
+
+.categories h3 {
+  line-height: 1.5rem;
+}
+
+.category-card {
+  text-align: center;
+  background-color: #272727;
+  border-radius: 8px;
+  height: 105px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: transform 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5px;
+}
+
+.category-card:hover {
+  transform: translateY(-5px);
+}
+
+.category-card:hover h3 {
+  color: rgb(255, 238, 0);
+  opacity: 100%;
+}
+
+.category-info h3 {
+  margin: 8px 0 15px 0;
+  font-size: 1.2em;
+  color: white;
+  opacity: 80%;
+  font-weight: 600;
+}
 
 
-    @keyframes scroll {
-        0% {
-        transform: translateX(0);
-        }
-        100% {
-        transform: translateX(-50%);
-        }
-    }
+.why-us {
+  /* max-width: 1200px; */
+  margin: 100px auto;
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 
-    .discovery-cover-button {
-        width: 200px;
-        padding: 10px 20px;
-        font-size: 1.1rem;
-        background-color: #ff4500;
-        color: white;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-        transition: background-color 0.3s ease;
+.why-us h2 {
+  color: white;
+  font-weight: 600;
+}
 
-        position: absolute;
-        top: 70%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-    }
+.why-us h3 {
+  color: white;
+  opacity: 80%;
+  font-weight: 600;
+}
 
-    .discovery-cover-button:hover {
-        background-color: #ff6a33;
-    }
+.why-us p {
+  color: #6d5e96;
+}
 
-  .discovery h2 {
-    text-align: left;
-    margin-bottom: 30px;
-    color: #333;
-  }
+.why-us-text {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 
-  .discovery p {
-    text-align: center;
-  }
-
-  .games h2 {
-    text-align: center;
-  }
-  
-  .game-list {
-    text-decoration: none;
-    width: 100%;
-    max-width: 1200px;
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 20px;
-    justify-content: center;
-  }
-  
-    .game-card {
-        text-decoration: none;
-        text-align: center;
-        background-color: #fff;
-        border-radius: 8px;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        overflow: hidden;
-        transition: transform 0.3s ease;
-    }
-  
-    .game-card:hover {
-      text-decoration: none;
-        transform: translateY(-5px);
-    }
-  
-        .game-image {
-            width: 100%;
-            height: 75%;
-            object-fit: cover;
-        }
-  
-        .game-info {
-            text-decoration: none;
-            padding: 15px;
-        }
-    
-        .game-info h3 {
-            margin: 0 0 10px 0;
-            font-size: 1.2em;
-            color: #333;
-        }
-        
-        .game-info p {
-            text-decoration: none;
-            margin: 0;
-            color: #666;
-        }
-
-  .categories {
-      margin: 50px auto
-  }
-
-    .categories h2 {
-      text-align: center;
-    }
-
-  .why-us {
-    max-width: 1200px;
-    margin: 100px auto;
-  }
+.wip {
+  position: absolute; /* Position relative to the parent container */
+  top: 0; /* Align to the top of the parent container */
+  left: 0; /* Align to the left of the parent container */
+  width: 100%; /* Full width of the parent container */
+  height: 100%; /* Full height of the parent container */
+  background: rgba(0, 0, 0, 0.7); /* Semi-transparent black background */
+  color: white; /* White text color */
+  z-index: 1000; /* High z-index to appear above other elements */
+  display: flex; /* Use flexbox for centering content */
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+  text-align: center; /* Center text alignment */
+  font-size: 2em; /* Larger font size */
+  opacity: 0.9; /* Slightly transparent */
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+.parent-container {
+  position: relative; /* Ensure the container is positioned */
+  padding: 0px
+}
