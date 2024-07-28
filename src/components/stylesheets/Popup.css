@@ -1,14 +1,16 @@
 .popup-overlay {
     position: fixed;
     top: 25%;
-    left: 25%;
-    width: 50%;
-    background-color: rgb(121, 127, 134);
+    left: 22%;
+    width: 800px;
+    height: 500px;
+    background-color: rgb(164, 171, 179);
     border-radius: 5px;
 }
 
 .popup-top {
-    background-color: rgb(164, 171, 179);
+    background-color: rgb(121, 127, 134);
+
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
     padding: 10px;
