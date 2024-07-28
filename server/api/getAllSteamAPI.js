@@ -5,7 +5,7 @@ const { default: fetch } = require('node-fetch');
 
 const key = process.env.STEAMKEY;
 
-const allGamesUrl = `https://api.steampowered.com/ISteamApps/GetAppList/v2/`;
+const allGamesUrl = `https://api.steampowered.com/IStoreService/GetAppList/v1/?include_games=true&include_dlc=false&include_software=false&include_videos=false&include_hardware=false&key=3539272DDA1D07BBE9DC746EDBF78735&max_results=500`;
 
 async function getAllGames() {
     try {
@@ -14,8 +14,8 @@ async function getAllGames() {
             throw new Error(`HTTP request failed: ${response.status}`);
         }
         const json = await response.json();
-        console.log(json.applist.apps)
-        return json.applist.apps;
+        console.log(json.response.apps)
+        return json.response.apps;
     } catch (error) {
         throw new Error(`HTTP request failed: ${error.message}`);
     }
@@ -32,7 +32,7 @@ async function getGameInfo(appId) {
         if (json[appId].success === true)  {
             return json[appId].data
         }
-        console.log("here",json[appId])
+        console.log("righthere",json[appId])
         return;
     } catch (error) {
         throw new Error(`HTTP request failed: ${error.message}`);
@@ -56,27 +56,5 @@ async function fetchGamesByPage(allGames, pageIndex, pageSize) {
     const gameDetails = await Promise.all(gameDetailsPromises);
     return gameDetails;
 }
-
-async function main() {
-    try {
-        const allGames = await getAllGames();
-        const pageSize = 25; 
-        let pageIndex = 0;
-
-        console.log(`Fetching page ${pageIndex + 1}`);
-        let gameDetails = await fetchGamesByPage(allGames, pageIndex, pageSize);
-       
-
-        pageIndex++;
-        console.log(`Fetching page ${pageIndex + 1}`);
-        gameDetails = await fetchGamesByPage(allGames, pageIndex, pageSize);
-        console.log(gameDetails);
-        return gameDetails;
-    } catch (error) {
-        console.error(error);
-    }
-}
-
-main();
 
 module.exports = { getAllGames, getGameInfo, fetchGamesByPage };
