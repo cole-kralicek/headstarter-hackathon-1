@@ -10,6 +10,11 @@ const Search = () => {
   const [error, setError] = useState(null);
 
   useEffect(() => {
+    const cachedGames = localStorage.getItem('games');
+    if (cachedGames) {
+      setGames(JSON.parse(cachedGames));
+      setLoading(false);
+    } else {
     const loadGames = async () => {
       try {
         const gamesData = await fetchGames();
@@ -22,6 +27,7 @@ const Search = () => {
     };
 
     loadGames();
+    }
   }, []);
   if (loading) {
     return <div>Loading...</div>;
@@ -55,10 +61,13 @@ const Search = () => {
         <div className="results-container">
           {filteredResults.map(result => (
             <div key={result.id} className="result-card">
-              <img src={result.imageUrl} alt={result.title} className="result-image" />
+              <img src={result.image} alt={result.title} className="result-image" />
               <div className="result-details">
-                <h3 className="result-title">{result.title}</h3>
-                <p className="result-description">{result.description}</p>
+                
+                <h3 className="result-title">{result.name}{result.id}</h3>
+                
+                <p className="result-description">{result.description}</p>;
+                
               </div>
             </div>
           ))}

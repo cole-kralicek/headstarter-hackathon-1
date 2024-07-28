@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState,useEffect } from 'react';
 import Card from '../components/Card.js'
 import Popup from '../components/Popup.js'
 import Header from '../components/Header.js';
@@ -13,9 +13,17 @@ const Library = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-
+  const games1 = [
+    { id: 1, name: 'Elden Ring', year: '2024', activePlayers: '5000', description: 'Game description here', image: '../imgs/elden-ring.webp' },
+    { id: 2, name: 'COD', year: '2024', activePlayers: '5000', description: 'Game description here', image: '../imgs/elden-ring.webp' }
+  ];
 
   useEffect(() => {
+    const cachedGames = localStorage.getItem('games');
+    if (cachedGames) {
+      setGames(JSON.parse(cachedGames));
+      setLoading(false);
+    } else {
     const loadGames = async () => {
       try {
         const gamesData = await fetchGames();
@@ -28,6 +36,7 @@ const Library = () => {
     };
 
     loadGames();
+    }
   }, []);
   if (loading) {
     return <div>Loading...</div>;
@@ -49,14 +58,13 @@ const Library = () => {
 
   return (
     <div>
-      
       <Header />
       <main className='library-container'>
         <h1 className='library-title'>My Library</h1>
         <h2 className='game-status'>Owned</h2>
         <div className="gameList">
           <ul>
-            {games.map(game => (
+            {games1.map(game => (
               <li key={game.id}>
                 <Card game={game} onClick={() => handleCardClick(game)} />
               </li>
