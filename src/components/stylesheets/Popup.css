@@ -30,11 +30,18 @@
     position: absolute;
     top: 10px;
     right: 10px;
-    background: transparent;
+    background: #414141;
     border: none;
     font-family: 'Press Start 2P', system-ui;
     color: #6d5e96;
     font-weight: 800;
+    padding-top: 5px;
+    padding-bottom: 3px;
+    padding-left: 7px;
+    cursor: pointer;
+    
+    
+
 }
 
 .popup-header {
@@ -54,6 +61,7 @@
     margin-left: 20px;
     padding-top: 10px;
     width: 75%;
+    color: white;
     /* background-color: red; */
 }
 
@@ -85,7 +93,16 @@
     font-size: 17px;
     color: white;
     opacity: 80%;
+    display: -webkit-box;
+    -webkit-line-clamp: 6;
+    -webkit-box-orient: vertical;  
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: normal; /* Allows the text to wrap */
 }
+
+    
+
 
 
 .popup-details {

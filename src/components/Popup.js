@@ -14,8 +14,8 @@ const Popup = ({ game, onClose, isVisible }) => {
           <div className="popup-info">
             <h2>{game.name}</h2>
             <div className="popup-meta">
-              <p>{game.year}</p>
-              <p>Active Players: {game.activePlayers}</p>
+              {/* <p>{game.year}</p>
+              <p>Active Players: {game.activePlayers}</p> */}
             </div>
             <p className="popup-description">{game.description}</p>
           </div>
