@@ -1,18 +1,13 @@
 import React from "react";
+
 import GameDetails from "../components/GameDetails";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
-import Reviews from "../components/Reviews";
 import UserContent from "../components/UserContent";
 import ReviewForm from "../components/ReviewForm";
 
-const Game = () => {
-    const games = [
-        { id: 1, name: 'Elden Ring', year: '2024', activePlayers: '5000', description: 'Game description here', image: '../imgs/elden-ring.webp' },
-        { id: 2, name: 'Call of Duty', year: '2024', activePlayers: '4000', description: 'Game description here', image: '../imgs/elden-ring.webp' },
-        { id: 3, name: 'Elden Ring', year: '2024', activePlayers: '5000', description: 'Game description here', image: '../imgs/elden-ring.webp' },
-        { id: 4, name: 'Call of Duty', year: '2024', activePlayers: '4000', description: 'Game description here', image: '../imgs/elden-ring.webp' }
-    ];
+
+const Game = ( {id} ) => {
 
     const reviews = [
         { id: 1, username: 'User1', rating: 5, comment: 'Amazing game! Highly recommend it.' },
@@ -29,7 +24,7 @@ const Game = () => {
     return (
         <div>
             <Header/>
-            <GameDetails/>
+            <GameDetails gameId={id}/>
             <ReviewForm/>
             <UserContent reviews={reviews} ratings={ratings}/>
             <Footer/>

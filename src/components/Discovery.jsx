@@ -1,16 +1,25 @@
 
-import React from "react";
+import React, { useState, useEffect } from "react";
 
 import './stylesheets/Discovery.css';
+import { fetchPopularGames } from "../apiService";
 
-const Discovery = ({ games }) => {
-    // Games being an array of games objects of the most popular games
-    games = [
-        { id: 1, name: 'Elden Ring', year: '2024', activePlayers: '5000', description: 'Game description here', image: '../imgs/elden-ring.webp' },
-        { id: 2, name: 'Call of Duty', year: '2024', activePlayers: '4000', description: 'Game description here', image: '../imgs/elden-ring.webp' },
-        { id: 3, name: 'Elden Ring', year: '2024', activePlayers: '5000', description: 'Game description here', image: '../imgs/elden-ring.webp' },
-        { id: 4, name: 'Call of Duty', year: '2024', activePlayers: '4000', description: 'Game description here', image: '../imgs/elden-ring.webp' }
-    ];
+const Discovery = () => {
+    const [games, setGames] = useState([]);
+    const [error, setError] = useState(''); 
+
+    useEffect(() => {
+        const loadGames = async () => {
+            try {
+                const gamesData = await fetchPopularGames();
+                setGames(gamesData);
+            } catch(error) {
+                setError(error.message); 
+            }
+        };
+    
+        loadGames();
+      }, []);
 
     const categories = [
         "Action",
@@ -35,9 +44,10 @@ const Discovery = ({ games }) => {
             </section>
             <section className="games">
                 <h2>Trending Games</h2>
+                {error && <div>{error}</div>}
                 <div className="game-list-scroll">
                     <div className="game-list">
-                        {games.map((game) => (
+                        {games.slice(0, 4).map((game) => (
                             <div key={game.id} className="game-card">
                                 <img src={game.image} alt={game.name} className="game-image"></img>
                                 <div className="game-info">
