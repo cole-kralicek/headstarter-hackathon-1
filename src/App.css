@@ -1,19 +1,29 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Press+Start+2P&display=swap');
+
+
+html,
+body {
+  font-family: 'Press Start 2P', system-ui;
+  background-color: #111111;
+  margin: 0;
+}
 
 .gameList {
-    display: flex;
-    flex-direction: row; 
-    align-items: center; 
-    background-color: #4e5054;
-  }
-  
-  ul {
-    display: flex;
-    flex-wrap: wrap; /*probably change to scroll to the right*/
-    justify-content: center; 
-    padding: 0;
-    list-style-type: none; 
-  }
-  
-  li {
-    margin: 8px;
-  }
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  background-color: #4e5054;
+}
+
+ul {
+  display: flex;
+  flex-wrap: wrap;
+
+  justify-content: center;
+  padding: 0;
+  list-style-type: none;
+}
+
+li {
+  margin: 8px;
+}

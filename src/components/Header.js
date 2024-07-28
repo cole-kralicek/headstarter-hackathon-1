@@ -3,22 +3,22 @@ import Search from './Search.js'
 import './stylesheets/Header.css';
 
 
-const Header = () => {
-  return (
-    <nav className="header">
-      
-        <div className="leftItems">
-          <img src="/path-to-your-logo.png" alt="Logo" />
-          <Search />
-     
-        </div>
-        <div className="Right Items">
-          <button className="homeButton">Home</button>
-          <button className="libButton">Library</button>
-        </div>
-      
-    </nav>
-  );
+function Header() {
+    return (
+        <header class="header">
+            <img></img>
+            <nav>
+                <ul>
+                    <li>
+                        <a href='/'>Home</a>
+                    </li>
+                    <li>
+                        <a href='/library'>Library</a>
+                    </li>
+                </ul>
+            </nav>
+        </header>
+    )
 }
 
 export default Header;
