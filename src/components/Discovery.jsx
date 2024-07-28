@@ -35,32 +35,18 @@ const Discovery = ({ games }) => {
             </section>
             <section className="games">
                 <h2>Trending Games</h2>
-                <div className="game-list-scroll">
-                    <div className="game-list">
-                        {games.map((game) => (
-                            <div key={game.id} className="game-card">
-                                <img className="game-image" src={game.image} alt={game.name}></img>
-                                <div className="game-info">
-                                    <h3>{game.name}</h3>
-                                    <p>Your rating: 0/5</p>
-                                </div>
-                            </div>
-                        ))}
-                    </div>
-                </div>
-            </section>
-            <section className="categories">
-                <h2>Browse by Category</h2>
                 <div className="game-list">
-                    {categories.map((cat) => (
-                        <div key={cat} className="category-card">
-                            <div className="category-info">
-                                <h3>{cat}</h3>
+                    {games.map((game) => (
+                        <div key={game.id} className="game-card">
+                            <img src={game.image} alt={game.name} className="game-image"></img>
+                            <div className="game-info">
+                                <h3>{game.name}</h3>
+                                <p>Players: {game.activePlayers}</p>
                             </div>
                         </div>
                     ))}
                 </div>
-            </section>
+                </section>
             <section className="why-us">
                 <div>
                     <h2>Why Use Backseat?</h2>

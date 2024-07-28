@@ -7,12 +7,9 @@ import Footer from "../components/Footer";
 function Home() {
     return (
         <div>
-            <div className="wrapper">
-                <Discovery />
-                <Header />
-            </div>
-
-            <Footer />
+            <Header/>
+            <Discovery/>
+            <Footer/>
         </div>
     )
 }
