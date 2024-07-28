@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import Card from '../components/Card.js'
 import Popup from '../components/Popup.js'
+import Header from '../components/Header.js'
 import '../App.css'
 
 const Library = ()=> {
@@ -26,6 +27,7 @@ const games = [
 
   return (
     <div>
+        <Header/>
       <main>
       <h1>My Library</h1>
         <h2>Owned</h2>
